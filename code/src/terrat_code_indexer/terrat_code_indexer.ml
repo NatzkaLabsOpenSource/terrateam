@@ -114,7 +114,7 @@ let rec process_path base path =
                            base);
                     ]
                     @ process_path
-                        (Some (Opentofu_mods.Module.source m))
+                        (Some (CCOption.map_or ~default:(Opentofu_mods.Module.source m) CCFun.(flip concat_path (Opentofu_mods.Module.source m)) base))
                         (concat_path (dirname path) (Opentofu_mods.Module.source m))
                   else [])
                 (Opentofu_mods.collect_modules ast)
