@@ -2645,7 +2645,7 @@ let update_file_patterns index module_paths dirname workspacename file_patterns 
           CCList.filter_map
             (function
               | Index.Dep.Module path ->
-                  Some (Filename.concat "${DIR}" (Filename.concat path "*.tf")))
+                  Some (Filename.concat "${DIR}" (Filename.concat path "**/*")))
             mods
           @ CCList.map File_pattern.file_pattern file_patterns
       | None -> CCList.map File_pattern.file_pattern file_patterns
